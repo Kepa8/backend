@@ -1,3 +1,12 @@
+
+const express = require('express');
+const app = express();
+app.use(express.urlencoded({ extended: false }));
+app.use(express.static('public'));
+app.get("/", function(req, res) {
+    res.send("Kaixo mundua!");
+});
+
 app.post("/bezeroa", function (req, res) {
     // datuak eskuratu req.body-tik
     let izena = req.body.izena;
@@ -31,4 +40,8 @@ app.post("/bezeroa", function (req, res) {
 
     // Bidali erantzun bat bezeroari datuekin
     res.json(datuakJSON);
+});
+
+app.listen(3000, function() {
+    console.log("Zerbitzaria 3000 portuan entzuten");
 });
